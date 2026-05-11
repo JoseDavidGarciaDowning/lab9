@@ -1,0 +1,25 @@
+{
+  "name": "lab2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "servor src/ index.html 1234 --reload",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JoseDavidGarciaDowning/laboratorio2.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/JoseDavidGarciaDowning/laboratorio2/issues"
+  },
+  "homepage": "https://github.com/JoseDavidGarciaDowning/laboratorio2#readme",
+  "devDependencies": {
+    "servor": "^4.0.2"
+  }
+}
