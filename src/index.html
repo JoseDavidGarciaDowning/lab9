@@ -5,11 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Laboratorio 2</title>
     <link href="styles.css" rel="stylesheet" />
+    <script type="module" src="./main.js"></script>
   </head>
   <body>
-    <rotulo-card></rotulo-card>
-    <poster-card></poster-card>
-    <script type="module" src="./components/RotuloCard.js"></script>
-    <script type="module" src="./components/PosterCard.js"></script>
+    <rotulo-card
+      image="image.png"
+      items='["Sala 1, 2, 3", "Soporte Técnico", "Data Center", "Laboratorio 3 y 4", "Dirección General"]'
+    ></rotulo-card>
+    
+    <poster-card
+      image="personas.png"
+      title="LA UNIVERSIDAD TE PROTEGE"
+      message1="Tu seguridad es primero"
+      message2="¡Denunciá cualquier abuso!"
+      qr-label="Para más información,<br />escaneá el código:"
+      footer5="Sede Central"
+    ></poster-card>
   </body>
 </html>

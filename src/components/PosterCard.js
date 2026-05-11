@@ -6,7 +6,6 @@ template.setHTMLUnsafe(/*html*/ `
   </style>
 
   <div class="poster">
-    <!-- ════ HEADER ════ -->
     <div class="header">
       <div class="exclaim-left">
         <div class="bar"></div>
@@ -18,23 +17,17 @@ template.setHTMLUnsafe(/*html*/ `
       </div>
 
       <div class="title-group">
-        <div class="la-sede"><span>LA SEDE</span></div>
-        <div class="te-acompana">
-          <div class="te-badge"><span>TE</span></div>
-          <div class="acompana-badge"><span>ACOMPAÑA</span></div>
-        </div>
+        <div class="la-sede"><span id="title">LA SEDE TE ACOMPAÑA</span></div>
       </div>
     </div>
 
-    <!-- ════ MESSAGE ════ -->
     <div class="message">
-      <p>El respeto no se negocia</p>
-      <p>¡Pará ya de acosar!</p>
+      <p id="msg1">El respeto no se negocia</p>
+      <p id="msg2">¡Pará ya de acosar!</p>
     </div>
 
-    <!-- ════ QR CODE ════ -->
     <div class="qr-section">
-      <p class="qr-label">Si necesitás ayuda,<br />escaneá este QR:</p>
+      <p class="qr-label" id="qr-label">Si necesitás ayuda,<br />escaneá este QR:</p>
       <div class="qr-box">
         <div class="qr-grid">
           <div class="qr-corner-tl"></div>
@@ -45,24 +38,22 @@ template.setHTMLUnsafe(/*html*/ `
       </div>
     </div>
 
-    <!-- ════ PEOPLE ════ -->
     <div class="people">
-      <img src="personas.png" alt="Personas" />
+      <img id="poster-image" src="personas.png" alt="Personas" />
     </div>
 
-    <!-- ════ FOOTER ════ -->
     <div class="footer">
       <div class="footer-item">
-        <span class="footer-ucr">UCR</span>
+        <span class="footer-ucr" id="footer1">UCR</span>
         <div class="footer-ucr-line"></div>
       </div>
       <div class="footer-item bordered">
-        <span class="footer-ucr-sm">UCR</span>
-        <span class="footer-libre">LIBRE DE<br />ACOSO<br />SEXUAL</span>
+        <span class="footer-ucr-sm" id="footer2">UCR</span>
+        <span class="footer-libre" id="footer3">LIBRE DE<br />ACOSO<br />SEXUAL</span>
       </div>
       <div class="footer-item">
-        <span class="footer-sg">SG</span>
-        <span class="footer-sede">Sede de<br />Guanacaste</span>
+        <span class="footer-sg" id="footer4">SG</span>
+        <span class="footer-sede" id="footer5">Sede de<br />Guanacaste</span>
       </div>
     </div>
   </div>
@@ -74,7 +65,35 @@ class PosterCard extends HTMLElement {
   }
 
   connectedCallback() {
-    this.appendChild(template.content.cloneNode(true));
+    this.render();
+  }
+
+  render() {
+    const node = template.content.cloneNode(true);
+
+    const updateText = (selector, attrName) => {
+      const val = this.getAttribute(attrName);
+      if (val !== null) {
+        node.querySelector(selector).setHTMLUnsafe(val);
+      }
+    };
+
+    updateText('#title', 'title');
+    updateText('#msg1', 'message1');
+    updateText('#msg2', 'message2');
+    updateText('#qr-label', 'qr-label');
+    updateText('#footer1', 'footer1');
+    updateText('#footer2', 'footer2');
+    updateText('#footer3', 'footer3');
+    updateText('#footer4', 'footer4');
+    updateText('#footer5', 'footer5');
+
+    const image = this.getAttribute('image');
+    if (image) {
+      node.querySelector('#poster-image').src = image;
+    }
+
+    this.replaceChildren(node);
   }
 }
 
